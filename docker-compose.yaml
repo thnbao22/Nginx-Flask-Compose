@@ -1,12 +1,12 @@
 services:
-  flask_app:
+  backend:
     build:
       context: backend
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
     
-  nginx:
+  frontend:
     build:
       context: frontend
       dockerfile: Dockerfile
@@ -15,4 +15,4 @@ services:
     volumes:
       - ./frontend/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - flask_app
+      - backend
